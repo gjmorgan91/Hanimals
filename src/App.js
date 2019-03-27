@@ -24,40 +24,38 @@ class App extends Component {
       .then(state => this.setState(state));
   }
 
-  newHanimal() {
-    //make a call to the db to get a new animal and hands then update the board
-    return 'yes';
+  async newHanimal() {
+    console.log("Making new Hanimal");
+    const response = await fetch("/api/createHanimal", {
+      method: "GET"
+    });
+    console.log(response.json());
+    return "yes";
   }
 
   showSaveUI() {
     //toggle the form for saving the hanimal to the library
-    return 'yes';
+    return "yes";
   }
 
   newColor() {
     //generates a new color to be used as the sticky note and hanimal fill color or picks from a list
-    return 'yes';
+    return "yes";
   }
 
   render() {
     return (
       <div className="App">
         <nav>
-          <button onClick={this.newHanimal()}>
-            Gimme Moar
-          </button>
-          <button>
-            Library
-          </button>
-          <button onClick={this.showSaveUI()}>
-            Save
-          </button>
+          <button onClick={this.newHanimal}>Gimme Moar</button>
+          <button>Library</button>
+          <button onClick={this.showSaveUI}>Save</button>
         </nav>
         <Canvas
-          animal={'animalobject'}
-          hands={'[hand, hand, hand]'}
+          animal={"animalobject"}
+          hands={"[hand, hand, hand]"}
           color={this.newColor()}
-        ></Canvas>
+        />
         <footer>
           {/* Info about the project, link to the repo and all that jazz */}
         </footer>

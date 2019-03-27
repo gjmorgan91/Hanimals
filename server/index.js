@@ -36,7 +36,7 @@ app.get("/api/addAnimal", (req, res) => {
 });
 
 app.get("/api/addHand", (req, res) => {
-  const newHand = new Hand({ location: "sampleLocation3" });
+  const newHand = new Hand({ location: "./hand_images/" });
   newHand.save(function(err, hand) {
     if (err) return console.error(err);
     console.log(hand.location + " saved to hands collection");

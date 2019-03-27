@@ -1,1 +1,24 @@
 /* CSS for the app */
+svg.hand {
+
+}
+
+svg.hand path#outline {
+
+}
+
+svg.hand path#background {
+  fill: inherit;
+}
+
+svg.animal {
+
+}
+
+svg.animal path#outline {
+
+}
+
+svg.animal path#background {
+  fill: inherit;
+}

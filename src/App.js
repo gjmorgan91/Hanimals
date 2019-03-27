@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Canvas from "./Canvas";
 
 class App extends Component {
   constructor(props) {
@@ -24,34 +24,43 @@ class App extends Component {
       .then(state => this.setState(state));
   }
 
+  newHanimal() {
+    //make a call to the db to get a new animal and hands then update the board
+    return 'yes';
+  }
+
+  showSaveUI() {
+    //toggle the form for saving the hanimal to the library
+    return 'yes';
+  }
+
+  newColor() {
+    //generates a new color to be used as the sticky note and hanimal fill color or picks from a list
+    return 'yes';
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">Enter your name: </label>
-            <input
-              id="name"
-              type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
-          <p>{this.state.greeting}</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <nav>
+          <button onClick={this.newHanimal()}>
+            Gimme Moar
+          </button>
+          <button>
+            Library
+          </button>
+          <button onClick={this.showSaveUI()}>
+            Save
+          </button>
+        </nav>
+        <Canvas
+          animal={'animalobject'}
+          hands={'[hand, hand, hand]'}
+          color={this.newColor()}
+        ></Canvas>
+        <footer>
+          {/* Info about the project, link to the repo and all that jazz */}
+        </footer>
       </div>
     );
   }

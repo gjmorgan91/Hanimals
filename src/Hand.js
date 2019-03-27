@@ -4,7 +4,9 @@ class Hand extends Component {
     render() {
         return (
             <div>
-                {this.props.hand.svg}
+                {console.log('holy fuck')}
+                {/* {console.log('Hand: '+this.props.hand.location)}
+                <img src={this.props.hand.location}/> */}
             </div>
         );
     }

@@ -5,11 +5,11 @@ class Canvas extends Component {
     render() {
         return (
             <div>
-                <StickyNote color={this.props.color} >
+                <StickyNote color={this.props.color}
                     animal={this.props.animal}
                     hands={this.props.hands}
-                    color={this.props.color}>
-                </StickyNote>
+                ></StickyNote>
+                {console.log('Canvas '+this.props.animal.body)}
             </div>
         );
     }

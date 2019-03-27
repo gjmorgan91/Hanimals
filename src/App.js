@@ -1,27 +1,20 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./index.css";
 import Canvas from "./Canvas";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      greeting: ""
+      animal: '',
+      hands: [],
+      color: ''
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.newHanimal = this.newHanimal.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ name: event.target.value });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
-      .then(response => response.json())
-      .then(state => this.setState(state));
+  componentDidMount() {
+    this.newHanimal();
   }
 
   async newHanimal() {
@@ -29,8 +22,25 @@ class App extends Component {
     const response = await fetch("/api/createHanimal", {
       method: "GET"
     });
-    console.log(response.json());
-    return "yes";
+
+    let data = await response.json();
+    //data.animal[0].body = require(data.animal[0].body);
+    data.animal[0].body = require('./animal_images/shark_1.svg');
+
+    data.hands[0].location = require('./hand_images/hand_1.svg');
+    data.hands[1].location = require('./hand_images/hand_2.svg');
+    // for (let i = 0; i < data.hands.length; i++) {
+    //   data.hands[i].location = require(data.hands[i].location);
+    // }
+
+    console.log('Hands '+ data.hands);
+
+    this.setState({
+      animal: data.animal[0],
+      hands: JSON.stringify(data.hands),
+      color: this.newColor()
+    }
+    )
   }
 
   showSaveUI() {
@@ -52,9 +62,9 @@ class App extends Component {
           <button onClick={this.showSaveUI}>Save</button>
         </nav>
         <Canvas
-          animal={"animalobject"}
-          hands={"[hand, hand, hand]"}
-          color={this.newColor()}
+          animal={this.state.animal}
+          hands={this.state.hands}
+          color={this.state.color}
         />
         <footer>
           {/* Info about the project, link to the repo and all that jazz */}

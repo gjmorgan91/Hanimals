@@ -3,8 +3,14 @@ const { Schema } = mongoose.Schema;
 
 const animalSchema = mongoose.Schema({
   name: String,
-  body: String,
-  numHands: Number
+  source: String,
+  numHands: Number,
+  hands: [{
+    top: Number,
+    left: Number,
+    rotation: Number,
+    scale: Number
+  }]
 });
 
 console.log("In animal");

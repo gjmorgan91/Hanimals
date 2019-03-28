@@ -22,3 +22,15 @@ svg.animal path#outline {
 svg.animal path#background {
   fill: inherit;
 }
+
+.sticky {
+  position: relative;
+}
+
+.animal {
+  position: absolute;
+}
+
+.hand {
+  position: absolute;
+}

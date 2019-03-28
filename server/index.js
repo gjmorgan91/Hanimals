@@ -21,14 +21,33 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
 
-app.get("/api/greeting", (req, res) => {
-  const name = req.query.name || "World";
-  res.setHeader("Content-Type", "application/json");
-  res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
-});
+/*const newAnimal = new Animal({
+  name: 'Shark',
+  numHands: 3,
+  hands: [
+    {
+      top: 20,
+      left: 10,
+      rotation: 90,
+      scale: 1
+    },
+    {
+      top: 70,
+      left: 3,
+      rotation: 20,
+      scale: 1
+    },
+    {
+      top: 40,
+      left: 20,
+      rotation: 120,
+      scale: 1
+    }
+  ],
+  source: "./animal_images/shark_1.svg"
+})
 
 app.get("/api/addAnimal", (req, res) => {
-  const newAnimal = new Animal({ name: "Name", body: "Bod", numHands: 55 });
   newAnimal.save(function(err, animal) {
     if (err) return console.error(err);
     console.log(animal.name + " saved to animals collection");
@@ -41,7 +60,7 @@ app.get("/api/addHand", (req, res) => {
     if (err) return console.error(err);
     console.log(hand.location + " saved to hands collection");
   });
-});
+});*/
 
 app.get("/api/createHanimal", async (req, res) => {
   const numAnimals = await Animal.find().count();
@@ -50,6 +69,7 @@ app.get("/api/createHanimal", async (req, res) => {
     .limit(-1)
     .skip(randomNumber);
   const numHands = randomAnimal[0].toObject().numHands;
+  console.log(randomAnimal[0].toObject().name)
   console.log("The number of hands is " + numHands);
 
   const totalHands = await Hand.find().count();

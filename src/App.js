@@ -14,6 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('Mounted');
     this.newHanimal();
   }
 
@@ -24,20 +25,12 @@ class App extends Component {
     });
 
     let data = await response.json();
-    //data.animal[0].body = require(data.animal[0].body);
-    data.animal[0].body = require('./animal_images/shark_1.svg');
 
-    data.hands[0].location = require('./hand_images/hand_1.svg');
-    data.hands[1].location = require('./hand_images/hand_2.svg');
-    // for (let i = 0; i < data.hands.length; i++) {
-    //   data.hands[i].location = require(data.hands[i].location);
-    // }
-
-    console.log('Hands '+ data.hands);
+    console.log(data.hands);
 
     this.setState({
       animal: data.animal[0],
-      hands: JSON.stringify(data.hands),
+      hands: data.hands,
       color: this.newColor()
     }
     )
@@ -58,14 +51,14 @@ class App extends Component {
       <div className="App">
         <nav>
           <button onClick={this.newHanimal}>Gimme Moar</button>
-          <button>Library</button>
-          <button onClick={this.showSaveUI}>Save</button>
+          {/* <button>Library</button> */}
+          {/* <button onClick={this.showSaveUI}>Save</button> */}
         </nav>
-        <Canvas
+        <Canvas 
           animal={this.state.animal}
           hands={this.state.hands}
           color={this.state.color}
-        />
+        />{console.log('Hand states: '+this.state.hands)}
         <footer>
           {/* Info about the project, link to the repo and all that jazz */}
         </footer>

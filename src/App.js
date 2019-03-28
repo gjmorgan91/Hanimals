@@ -42,15 +42,14 @@ class App extends Component {
   }
 
   newColor() {
-    //generates a new color to be used as the sticky note and hanimal fill color or picks from a list
-    return "yes";
+    return `rgb(${Math.random()*200+55},${Math.random()*200+55},${Math.random()*200+55})`
   }
 
   render() {
     return (
       <div className="App">
         <nav>
-          <button onClick={this.newHanimal}>Gimme Moar</button>
+          <button className='refresh' onClick={this.newHanimal}>Gimme Moar</button>
           {/* <button>Library</button> */}
           {/* <button onClick={this.showSaveUI}>Save</button> */}
         </nav>

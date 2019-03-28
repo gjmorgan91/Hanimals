@@ -12,7 +12,8 @@ class Hanimal extends Component {
                 top={this.props.animal.hands[index].top}
                 left={this.props.animal.hands[index].left}
                 rotation={this.props.animal.hands[index].rotation}
-                scale={this.props.animal.hands[index].scale}>
+                scale={this.props.animal.hands[index].scale}
+                color={this.props.color}>
             </Hand>
         )
     }
@@ -21,7 +22,8 @@ class Hanimal extends Component {
         return (
             <div className='hanimal'>
                 <Animal
-                    animal={this.props.animal}>
+                    animal={this.props.animal}
+                    color={this.props.color}>
                 </Animal>
                 {(this.props.hands[0]) ? this.getHand(0) : ''}
                 {(this.props.hands[1]) ? this.getHand(1) : ''}

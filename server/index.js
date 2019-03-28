@@ -21,47 +21,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
 
-/*const newAnimal = new Animal({
-  name: 'Shark',
-  numHands: 3,
-  hands: [
-    {
-      top: 20,
-      left: 10,
-      rotation: 90,
-      scale: 1
-    },
-    {
-      top: 70,
-      left: 3,
-      rotation: 20,
-      scale: 1
-    },
-    {
-      top: 40,
-      left: 20,
-      rotation: 120,
-      scale: 1
-    }
-  ],
-  source: "./animal_images/shark_1.svg"
-})
-
-app.get("/api/addAnimal", (req, res) => {
-  newAnimal.save(function(err, animal) {
-    if (err) return console.error(err);
-    console.log(animal.name + " saved to animals collection");
-  });
-});
-
-app.get("/api/addHand", (req, res) => {
-  const newHand = new Hand({ location: "./hand_images/" });
-  newHand.save(function(err, hand) {
-    if (err) return console.error(err);
-    console.log(hand.location + " saved to hands collection");
-  });
-});*/
-
 app.get("/api/createHanimal", async (req, res) => {
   const numAnimals = await Animal.find().count();
   const randomNumber = Math.floor(Math.random() * numAnimals);

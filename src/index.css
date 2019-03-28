@@ -1,4 +1,50 @@
 /* CSS for the app */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600');
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Montserrat';
+}
+
+body {
+  background-image: url('wood _background.png');
+  background-color: darkseagreen;
+  background-blend-mode: darken;
+}
+
+nav {
+  position: relative;
+  grid-area: nav;
+}
+
+button {
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  border-width: 2px;
+  background-color: rgba(255,255,255,0);
+  border-color: white;
+  color: white;
+  transition: all 0.5s ease-in-out;
+  appearance: none;
+  border-style: solid;
+  font-weight: bold;
+}
+button:hover {
+  color: black;
+  background-color: rgba(255,255,255,1);
+  transition: all 0.2s ease-in-out;
+}
+button:focus {
+  outline: 0;
+}
+
+svg {
+  display: block;
+}
+
 svg.hand {
 
 }
@@ -23,8 +69,40 @@ svg.animal path#background {
   fill: inherit;
 }
 
+.App {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-rows: 1fr 6fr 1fr;
+  grid-template-areas: 
+    '. . .'
+    '. sticky .'
+    '. nav .';
+    justify-items: center;
+}
+
+.canvas {
+  grid-area: sticky;
+}
+
+.sticky_container {
+  filter: drop-shadow(0.5rem 0.5rem 2rem rgba(0,0,0,0.8));
+}
+
 .sticky {
   position: relative;
+  width: 720px;
+  height: 720px;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+  background: -webkit-linear-gradient(15deg, rgba(30,0,0,0) 0%, rgba(30,0,0,0) 70%, rgba(30,0,0,0.5) 100%);
+  background: linear-gradient(190deg, rgba(30,0,0,0) 0%, rgba(30,0,0,0) 70%, rgba(30,0,0,0.5) 100%);
+}
+
+.hanimal {
+  transform: scale(0.66);
+  box-sizing: border-box;
+  height: 720px;
+  width: 720px;
 }
 
 .animal {

@@ -11,6 +11,7 @@ class Canvas extends Component {
                     animal={this.props.animal}
                     hands={this.props.hands}
                 ></StickyNote>
+                <button className='refresh' onClick={this.props.refresh}>Another!</button>
                 {console.log('Canvas '+this.props.hands)}
             </div>
         );

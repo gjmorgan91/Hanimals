@@ -45,19 +45,28 @@ class App extends Component {
     return `rgb(${Math.random()*200+55},${Math.random()*200+55},${Math.random()*200+55})`
   }
 
+  showMenu() {
+    // toggle showing ui to go into the form view, minimizing the canvas
+  }
+
   render() {
     return (
       <div className="App">
         <nav>
-          <button className='refresh' onClick={this.newHanimal}>Gimme Moar</button>
-          {/* <button>Library</button> */}
-          {/* <button onClick={this.showSaveUI}>Save</button> */}
+          <div className='title'>
+            <h1>Hanimals.io</h1>
+            <p>It puts some f@*!in' hands on some f@*!in' animals.</p>
+          </div>
+          <div className='menu'>
+            <button onClick={this.showMenu()}>+</button>
+          </div>
         </nav>
         <Canvas 
           animal={this.state.animal}
           hands={this.state.hands}
           color={this.state.color}
-        />{console.log('Hand states: '+this.state.hands)}
+          refresh={this.newHanimal}
+        />
         <footer>
           {/* Info about the project, link to the repo and all that jazz */}
         </footer>
